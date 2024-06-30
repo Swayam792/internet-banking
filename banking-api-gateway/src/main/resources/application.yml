@@ -1,7 +1,7 @@
 app:
   config:
     keycloak:
-      url: http://localhost:8080/admin
+      url: http://localhost:8080
       realm: swayam-banking-services
 
 spring:
@@ -9,14 +9,21 @@ spring:
     name: banking-api-gateway
   cloud:
     gateway:
-      routes:
+      routes: 
         - id: banking-user-service
           uri: lb://banking-user-service
           predicates:
             - Path=/user/**
           filters:
             - StripPrefix=1
-#        - id: banking-fund-transfer-service
+        - id: core-banking-service
+          uri: lb://core-banking-service
+          predicates:
+            - Path=/banking-core/**
+          filters:
+            - StripPrefix=1
+
+  #        - id: banking-fund-transfer-service
 #          uri: lb://banking-fund-transfer-service
 #          predicates:
 #            - Path=/fund-transfer/**
@@ -52,3 +59,5 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8081/eureka
+
+

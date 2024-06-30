@@ -1,3 +1,6 @@
+server:
+  port: 8092
+
 spring:
   application:
     name: core-banking-service
@@ -6,3 +9,16 @@ spring:
     username: root
     password: password
     driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8081/eureka
+
+info:
+  app:
+    name: ${spring.application.name}
