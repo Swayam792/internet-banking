@@ -43,8 +43,8 @@ spring:
         registration:
           internet-banking-core-client:
             provider: keycloak
-            client-id: internet-banking-core-client
-            client-secret: 0efd3e37-258e-4488-96ae-1dfe34679c9d
+            client-id: banking-service-core-client
+            client-secret: 9qxAawaK17WsOZu5sF3eFF4jpfiAq2Bq
             authorization-grant-type: authorization_code
             redirect-uri: http://localhost:8080/login/oauth2/code/keycloak
             scope: openid
