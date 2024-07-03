@@ -2,6 +2,7 @@ package com.swayam.banking.service;
 
 import com.swayam.banking.dto.User;
 import com.swayam.banking.entity.UserEntity;
+import com.swayam.banking.exception.EntityNotFoundException;
 import com.swayam.banking.model.mapper.UserMapper;
 import com.swayam.banking.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +25,7 @@ public class UserService {
     }
 
     public User readUser(String identification) {
-        UserEntity userEntity = userRepository.findByIdentificationNumber(identification).get();
+        UserEntity userEntity = userRepository.findByIdentificationNumber(identification).orElseThrow(EntityNotFoundException::new);
         return userMapper.convertToDto(userEntity);
     }
 

@@ -23,12 +23,19 @@ spring:
           filters:
             - StripPrefix=1
 
-  #        - id: banking-fund-transfer-service
-#          uri: lb://banking-fund-transfer-service
-#          predicates:
-#            - Path=/fund-transfer/**
-#          filters:
-#            - StripPrefix=1
+        - id: banking-fund-transfer-service
+          uri: lb://banking-fund-transfer-service
+          predicates:
+            - Path=/fund-transfer/**
+          filters:
+            - StripPrefix=1
+
+        - id: internet-banking-utility-payment-service
+          uri: lb://internet-banking-utility-payment-service
+          predicates:
+            - Path=/utility-payment/**
+          filters:
+            - StripPrefix=1
   security:
     oauth2:
       client:
